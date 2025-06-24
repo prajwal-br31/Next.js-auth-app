@@ -1,114 +1,72 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+     
+      <header className="px-6 py-6 bg-white dark:bg-gray-800 shadow text-center">
+        <h1 className="text-3xl font-bold">Financialist - Next.js Auth Dashboard Assessment</h1>
+      </header>
+
+   
+      <main className="flex-grow max-w-4xl mx-auto px-6 py-10 space-y-12">
+        {/* Project Description */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2"> Project Overview</h2>
+          <p className="text-gray-700 dark:text-gray-300">
+            A role-based authentication dashboard built with <strong>Next.js</strong>, allowing login as <strong>user</strong> or <strong>admin</strong>. Admin sees all users with A–Z sorting and their detials; users can view their profiles. Auth uses <strong>JWT in cookies</strong>.
+          </p>
+        </section>
+
+        {/* Mock Credentials */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">Mock Users</h2>
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+            <li><strong>For Admin Role :</strong> Username: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Admin</code>, Password: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">adminpwd</code></li>
+            <li><strong>For User Role :</strong> Username: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Prajwal</code>, Password: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">userpwd</code></li>
+            <li>More users are available with similar format in Admin view.</li>
+          </ul>
+        </section>
+
+        {/* Technical Details */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">Technical Details</h2>
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+            <li><strong>Framework:</strong> Next.js (Pages Router) with TypeScript</li>
+            <li><strong>API:</strong> <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">pages/api/</code></li>
+            <li><strong>Auth:</strong> JWT-based, cookie storage</li>
+            <li><strong>Pages:</strong> `/admin`, `/user`, `/login`, `/`</li>
+            <li><strong>UI:</strong> Tailwind CSS, Heroicons</li>
+            <li><strong>Mock Data:</strong> Stored in <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">lib/mockusers.ts</code></li>
+            <li><strong>Error Handling: </strong>401 Unauthorized responses redirect to /</li>
+            <li><strong>Middleware: </strong>Validates the auth cookie and JWT on the server side before rendering protected routes</li>
+          </ul>
+        </section>
+
+         {/* API Details */}
+        <section>
+          <h2 className="text-xl font-semibold mb-2">API Endpoints</h2>
+          <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+            <li><strong>api/auth/login :</strong> Validates username and password,sends valid response with cookie auth token</li>
+            <li><strong>api/auth/logout :</strong> Logs out by clearing out the cookie auth token</li>
+            <li><strong>api/auth/role :</strong> Returns the role of the user based on auth token in req.header.cookie</li>
+            <li><strong>api/profile/profileDetails :</strong> Returns user details based on the role</li>
+          </ul>
+        </section>
+
+        {/* Login Button */}
+        <section className="text-center">
+          <Link href="/login">
+            <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-full text-lg font-medium transition-shadow shadow-md hover:shadow-lg">
+              Go to Login
+            </button>
+          </Link>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="text-center text-sm text-gray-500 dark:text-gray-400 py-6 bg-white dark:bg-gray-800 mt-auto">
+        &copy; {new Date().getFullYear()} Next Auth Dashboard · Built for assessment
       </footer>
     </div>
   );
