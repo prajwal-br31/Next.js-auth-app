@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ```bash
 
-add .env file with key JWT_SECRET= 
+add .env.local file with key JWT_SECRET= 
 
 npm install
 
